@@ -1,0 +1,762 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Admin Panel | Smart Library Management System</title>
+
+<style>
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:Arial, Helvetica, sans-serif;
+}
+
+body{
+
+    background:
+    linear-gradient(rgba(5,25,60,.78),rgba(5,25,60,.78)),
+    url("images/library.jpg");
+
+    background-size:cover;
+    background-position:center;
+    background-repeat:no-repeat;
+    background-attachment:fixed;
+
+    color:white;
+
+}
+
+/* Navigation */
+
+nav{
+
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+
+    padding:20px 70px;
+
+    background:rgba(0,0,0,.35);
+
+    backdrop-filter:blur(6px);
+
+}
+
+.logo{
+
+    font-size:30px;
+    font-weight:bold;
+
+}
+
+nav ul{
+
+    display:flex;
+    list-style:none;
+
+}
+
+nav ul li{
+
+    margin-left:25px;
+
+}
+
+nav ul li a{
+
+    color:white;
+    text-decoration:none;
+    font-weight:bold;
+    transition:.3s;
+
+}
+
+nav ul li a:hover,
+.active{
+
+    color:#FFD54F;
+
+}
+
+/* Main Container */
+
+.container{
+
+    width:90%;
+    margin:40px auto;
+
+}
+
+.container h1{
+
+    text-align:center;
+    color:#FFD54F;
+    margin-bottom:30px;
+
+}
+
+/* Statistics */
+
+.stats{
+
+    display:grid;
+
+    grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+
+    gap:20px;
+
+    margin-bottom:40px;
+
+}
+
+.card{
+
+    background:rgba(255,255,255,.12);
+
+    backdrop-filter:blur(10px);
+
+    border-radius:15px;
+
+    padding:25px;
+
+    text-align:center;
+
+    transition:.3s;
+
+}
+
+.card:hover{
+
+    transform:translateY(-8px);
+
+}
+
+.card h2{
+
+    color:#FFD54F;
+    font-size:36px;
+    margin-bottom:10px;
+
+}
+
+/* Form */
+
+.form-box{
+
+    background:rgba(255,255,255,.12);
+
+    backdrop-filter:blur(10px);
+
+    border-radius:15px;
+
+    padding:30px;
+
+    margin-bottom:40px;
+
+}
+
+.form-box h2{
+
+    color:#FFD54F;
+    margin-bottom:20px;
+
+}
+
+.form-box input{
+
+    width:100%;
+
+    padding:14px;
+
+    margin-bottom:15px;
+
+    border:none;
+
+    border-radius:8px;
+
+    outline:none;
+
+}
+
+.form-box button{
+
+    width:100%;
+
+    padding:15px;
+
+    border:none;
+
+    border-radius:8px;
+
+    background:#FFD54F;
+
+    color:black;
+
+    font-size:16px;
+
+    font-weight:bold;
+
+    cursor:pointer;
+
+    transition:.3s;
+
+}
+
+.form-box button:hover{
+
+    background:white;
+
+}
+
+.form-msg{
+    text-align:center;
+    margin-top:-5px;
+    margin-bottom:15px;
+    font-weight:bold;
+    color:#FFD54F;
+}
+
+/* Tables */
+
+.table-box{
+
+    background:rgba(255,255,255,.12);
+
+    backdrop-filter:blur(10px);
+
+    border-radius:15px;
+
+    padding:25px;
+
+    margin-bottom:35px;
+
+    overflow-x:auto;
+
+}
+
+.table-box h2{
+
+    color:#FFD54F;
+    margin-bottom:20px;
+
+}
+
+table{
+
+    width:100%;
+
+    border-collapse:collapse;
+
+}
+
+th,td{
+
+    padding:15px;
+
+    text-align:center;
+
+}
+
+th{
+
+    background:#FFD54F;
+
+    color:black;
+
+}
+
+tr:nth-child(even){
+
+    background:rgba(255,255,255,.08);
+
+}
+
+.edit{
+
+    color:#00ff99;
+    cursor:pointer;
+    font-weight:bold;
+
+}
+
+.delete{
+
+    color:#ff4d4d;
+    cursor:pointer;
+    font-weight:bold;
+
+}
+
+.status-overdue{
+    color:#ff4d4d;
+    font-weight:bold;
+}
+
+.status-returned{
+    color:#8bc34a;
+    font-weight:bold;
+}
+
+.status-borrowed{
+    color:#FFD54F;
+    font-weight:bold;
+}
+
+/* Footer */
+
+footer{
+
+    background:rgba(0,0,0,.45);
+
+    padding:25px;
+
+    text-align:center;
+
+}
+
+footer a{
+
+    color:#FFD54F;
+
+    text-decoration:none;
+
+    margin:0 10px;
+
+}
+
+footer a:hover{
+
+    text-decoration:underline;
+
+}
+
+@media(max-width:900px){
+
+nav{
+
+    flex-direction:column;
+
+}
+
+nav ul{
+
+    flex-direction:column;
+
+    text-align:center;
+
+    margin-top:15px;
+
+}
+
+nav ul li{
+
+    margin:10px 0;
+
+}
+
+}
+
+</style>
+
+</head>
+
+<body>
+
+<nav>
+
+<div class="logo">📚 Smart Library</div>
+
+<ul>
+
+<li><a href="index.html">Home</a></li>
+
+<li><a href="catalog.html">Catalog</a></li>
+
+<li><a href="login.html">Login</a></li>
+
+<li><a href="register.html">Register</a></li>
+
+<li><a href="dashboard.html">Dashboard</a></li>
+
+<li><a href="admin.html" class="active">Admin</a></li>
+
+</ul>
+
+</nav>
+
+<div class="container">
+
+<h1>Library Administrator Panel</h1>
+
+<p class="form-msg" id="pageMsg"></p>
+
+<div class="stats">
+
+<div class="card">
+<h2 id="totalBooks">-</h2>
+<p>Total Books</p>
+</div>
+
+<div class="card">
+<h2 id="totalStudents">-</h2>
+<p>Registered Students</p>
+</div>
+
+<div class="card">
+<h2 id="borrowedCount">-</h2>
+<p>Borrowed Books</p>
+</div>
+
+<div class="card">
+<h2 id="overdueCount">-</h2>
+<p>Overdue Books</p>
+</div>
+
+</div>
+
+<div class="form-box">
+
+<h2>Add New Book</h2>
+
+<p class="form-msg" id="addBookMsg"></p>
+
+<form id="addBookForm">
+
+<input type="text" id="bookTitle" placeholder="Book Title" required>
+
+<input type="text" id="bookAuthor" placeholder="Author" required>
+
+<input type="text" id="bookGenre" placeholder="Category" required>
+
+<input type="number" id="bookCopies" placeholder="Number of Copies" min="1" required>
+
+<button type="submit">Add Book</button>
+
+</form>
+
+</div>
+
+<div class="table-box">
+
+<h2>Manage Books</h2>
+
+<table id="booksTable">
+
+<tr>
+
+<th>Title</th>
+
+<th>Author</th>
+
+<th>Category</th>
+
+<th>Status</th>
+
+<th>Action</th>
+
+</tr>
+
+<!-- Rows loaded dynamically -->
+
+</table>
+
+</div>
+
+<div class="table-box">
+
+<h2>Registered Students</h2>
+
+<table id="studentsTable">
+
+<tr>
+
+<th>Name</th>
+
+<th>Matric Number</th>
+
+<th>Email</th>
+
+</tr>
+
+<!-- Rows loaded dynamically -->
+
+</table>
+
+</div>
+
+<div class="table-box">
+
+<h2>Borrowing Records</h2>
+
+<table id="recordsTable">
+
+<tr>
+
+<th>Student</th>
+
+<th>Book</th>
+
+<th>Borrow Date</th>
+
+<th>Return Date</th>
+
+<th>Status</th>
+
+</tr>
+
+<!-- Rows loaded dynamically -->
+
+</table>
+
+</div>
+
+</div>
+
+<footer>
+
+<p>
+
+<a href="index.html">Home</a> |
+
+<a href="catalog.html">Catalog</a> |
+
+<a href="login.html">Login</a> |
+
+<a href="register.html">Register</a> |
+
+<a href="dashboard.html">Dashboard</a>
+
+</p>
+
+<br>
+
+<p>&copy; 2026 Smart Library Management System</p>
+
+</footer>
+
+<script>
+
+let books = [];
+let students = [];
+let records = [];
+
+// Guard: check logged in + admin
+async function checkAdmin() {
+  try {
+    const res = await fetch('/api/me');
+    if (!res.ok) {
+      window.location.href = 'login.html';
+      return false;
+    }
+    const data = await res.json();
+    if (data.user.role !== 'admin') {
+      document.getElementById('pageMsg').textContent = 'Access denied: admin only.';
+      document.querySelector('.container').innerHTML = '<p class="form-msg">You do not have access to this page.</p>';
+      return false;
+    }
+    return true;
+  } catch (err) {
+    window.location.href = 'login.html';
+    return false;
+  }
+}
+
+// Load everything
+async function loadAll() {
+  await Promise.all([loadBooks(), loadStudents(), loadRecords()]);
+  updateStats();
+}
+
+async function loadBooks() {
+  const res = await fetch('/api/books');
+  books = await res.json();
+  renderBooks();
+}
+
+async function loadStudents() {
+  const res = await fetch('/api/users');
+  students = await res.json();
+  renderStudents();
+}
+
+async function loadRecords() {
+  const res = await fetch('/api/admin/borrow-records');
+  records = await res.json();
+  renderRecords();
+}
+
+function updateStats() {
+  document.getElementById('totalBooks').textContent = books.length;
+  document.getElementById('totalStudents').textContent =
+    students.filter(s => s.role !== 'admin').length;
+
+  const now = new Date();
+  let borrowed = 0;
+  let overdue = 0;
+
+  records.forEach(r => {
+    if (!r.return_date) {
+      borrowed++;
+      if (new Date(r.due_date) < now) overdue++;
+    }
+  });
+
+  document.getElementById('borrowedCount').textContent = borrowed;
+  document.getElementById('overdueCount').textContent = overdue;
+}
+
+function renderBooks() {
+  const table = document.getElementById('booksTable');
+  table.innerHTML = `
+    <tr>
+      <th>Title</th>
+      <th>Author</th>
+      <th>Category</th>
+      <th>Status</th>
+      <th>Action</th>
+    </tr>
+  `;
+
+  books.forEach(book => {
+    const row = document.createElement('tr');
+    const isAvailable = book.available > 0;
+    row.innerHTML = `
+      <td>${book.title}</td>
+      <td>${book.author}</td>
+      <td>${book.genre || 'N/A'}</td>
+      <td>${isAvailable ? 'Available' : 'Borrowed'}</td>
+      <td><span class="delete" data-id="${book.id}">Delete</span></td>
+    `;
+    row.querySelector('.delete').addEventListener('click', () => deleteBook(book.id));
+    table.appendChild(row);
+  });
+}
+
+function renderStudents() {
+  const table = document.getElementById('studentsTable');
+  table.innerHTML = `
+    <tr>
+      <th>Name</th>
+      <th>Matric Number</th>
+      <th>Email</th>
+    </tr>
+  `;
+
+  students.filter(s => s.role !== 'admin').forEach(student => {
+    const row = document.createElement('tr');
+    row.innerHTML = `
+      <td>${student.name}</td>
+      <td>${student.matric_number || 'N/A'}</td>
+      <td>${student.email}</td>
+    `;
+    table.appendChild(row);
+  });
+}
+
+function renderRecords() {
+  const table = document.getElementById('recordsTable');
+  table.innerHTML = `
+    <tr>
+      <th>Student</th>
+      <th>Book</th>
+      <th>Borrow Date</th>
+      <th>Return Date</th>
+      <th>Status</th>
+    </tr>
+  `;
+
+  const now = new Date();
+
+  records.forEach(r => {
+    const row = document.createElement('tr');
+    let statusText, statusClass;
+
+    if (r.return_date) {
+      statusText = 'Returned';
+      statusClass = 'status-returned';
+    } else if (new Date(r.due_date) < now) {
+      statusText = 'Overdue';
+      statusClass = 'status-overdue';
+    } else {
+      statusText = 'Borrowed';
+      statusClass = 'status-borrowed';
+    }
+
+    row.innerHTML = `
+      <td>${r.user_name}</td>
+      <td>${r.book_title}</td>
+      <td>${new Date(r.borrow_date).toLocaleDateString()}</td>
+      <td>${r.return_date ? new Date(r.return_date).toLocaleDateString() : '-'}</td>
+      <td class="${statusClass}">${statusText}</td>
+    `;
+    table.appendChild(row);
+  });
+}
+
+// Add book
+document.getElementById('addBookForm').addEventListener('submit', async (e) => {
+  e.preventDefault();
+  const addBookMsg = document.getElementById('addBookMsg');
+
+  const title = document.getElementById('bookTitle').value.trim();
+  const author = document.getElementById('bookAuthor').value.trim();
+  const genre = document.getElementById('bookGenre').value.trim();
+  const copies = parseInt(document.getElementById('bookCopies').value, 10);
+
+  try {
+    const res = await fetch('/api/books', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ title, author, genre, copies })
+    });
+    const data = await res.json();
+
+    if (!res.ok) {
+      addBookMsg.textContent = data.error || 'Could not add book.';
+      return;
+    }
+
+    addBookMsg.textContent = 'Book added!';
+    document.getElementById('addBookForm').reset();
+    await loadBooks();
+    updateStats();
+  } catch (err) {
+    addBookMsg.textContent = 'Something went wrong.';
+  }
+});
+
+// Delete book
+async function deleteBook(id) {
+  if (!confirm('Delete this book?')) return;
+
+  try {
+    const res = await fetch(`/api/books/${id}`, { method: 'DELETE' });
+    const data = await res.json();
+
+    if (!res.ok) {
+      alert(data.error || 'Could not delete book.');
+      return;
+    }
+
+    await loadBooks();
+    updateStats();
+  } catch (err) {
+    alert('Something went wrong.');
+  }
+}
+
+// Init
+(async () => {
+  const ok = await checkAdmin();
+  if (ok) loadAll();
+})();
+
+</script>
+
+</body>
+</html>

@@ -1,0 +1,127 @@
+:root {
+  --accent: #8b5a2b;
+  --accent-dark: #5d3417;
+  --cream: #f8efe2;
+  --warm: #d8b07a;
+  --text: #4f2f1f;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  color: var(--text);
+  background: linear-gradient(135deg, #4b2b1f 0%, #7a4724 45%, #c48b4b 100%);
+  min-height: 100vh;
+  display: grid;
+  place-items: center;
+  padding: 24px;
+}
+
+.page {
+  width: min(100%, 860px);
+  background: rgba(255, 248, 240, 0.94);
+  border-radius: 28px;
+  box-shadow: 0 20px 50px rgba(45, 24, 12, 0.25);
+  overflow: hidden;
+  border: 2px solid rgba(255, 255, 255, 0.7);
+}
+
+.hero {
+  padding: 44px 36px 30px;
+  text-align: center;
+  background: linear-gradient(120deg, rgba(139, 90, 43, 0.16), rgba(216, 176, 122, 0.2));
+}
+
+.balloon-row {
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+  margin-bottom: 18px;
+  font-size: 2rem;
+}
+
+.badge {
+  display: inline-block;
+  margin-top: 8px;
+  padding: 8px 14px;
+  border-radius: 999px;
+  background: #fffaf2;
+  color: var(--accent-dark);
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  font-size: 0.8rem;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+}
+
+h1 {
+  font-size: clamp(2rem, 4vw, 3rem);
+  margin: 12px 0 10px;
+  color: var(--accent-dark);
+}
+
+.hero p {
+  font-size: 1.05rem;
+  margin: 0 auto 18px;
+  max-width: 620px;
+  line-height: 1.7;
+}
+
+.cake {
+  font-size: 4.5rem;
+  margin-top: 10px;
+}
+
+.content {
+  display: grid;
+  grid-template-columns: 1.1fr 0.9fr;
+  gap: 24px;
+  padding: 28px 36px 36px;
+}
+
+.card {
+  background: linear-gradient(145deg, #fffaf2, #f4e7d6);
+  border-radius: 22px;
+  padding: 24px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.05);
+}
+
+.card h2 {
+  margin-top: 0;
+  font-size: 1.3rem;
+  color: var(--accent-dark);
+}
+
+.card ul {
+  padding-left: 18px;
+  line-height: 1.8;
+}
+
+.highlight {
+  color: var(--accent);
+  font-weight: 700;
+}
+
+.footer-note {
+  margin-top: 16px;
+  font-size: 0.95rem;
+  color: #8b6547;
+}
+
+@media (max-width: 700px) {
+  .content {
+    grid-template-columns: 1fr;
+  }
+
+  .hero {
+    padding: 36px 22px 22px;
+  }
+
+  .content {
+    padding: 22px;
+  }
+}

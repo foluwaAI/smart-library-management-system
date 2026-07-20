@@ -1,0 +1,528 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Smart Library Management System</title>
+
+<style>
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:Arial, Helvetica, sans-serif;
+}
+
+body{
+
+    background:
+    linear-gradient(rgba(5,25,60,.78),rgba(5,25,60,.78)),
+    url("images/library.jpg");
+
+    background-size:cover;
+    background-position:center;
+    background-repeat:no-repeat;
+    background-attachment:fixed;
+
+    color:white;
+}
+
+/* Navigation */
+
+nav{
+
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+
+    padding:20px 70px;
+
+    background:rgba(0,0,0,.35);
+    backdrop-filter:blur(6px);
+
+}
+
+.logo{
+
+    font-size:30px;
+    font-weight:bold;
+
+}
+
+nav ul{
+
+    display:flex;
+    list-style:none;
+
+}
+
+nav ul li{
+
+    margin-left:25px;
+
+}
+
+nav ul li a{
+
+    text-decoration:none;
+    color:white;
+    font-weight:bold;
+    transition:.3s;
+
+}
+
+nav ul li a:hover{
+
+    color:#FFD54F;
+
+}
+
+/* Hero */
+
+.hero{
+
+    height:85vh;
+
+    display:flex;
+    justify-content:center;
+    align-items:center;
+
+    text-align:center;
+
+    padding:20px;
+
+}
+
+.hero h1{
+
+    font-size:60px;
+    margin-bottom:20px;
+
+}
+
+.hero p{
+
+    font-size:22px;
+    line-height:1.7;
+    margin-bottom:35px;
+
+}
+
+.btn{
+
+    display:inline-block;
+
+    padding:15px 35px;
+
+    margin:10px;
+
+    border-radius:40px;
+
+    text-decoration:none;
+
+    font-weight:bold;
+
+    transition:.3s;
+
+}
+
+.primary{
+
+    background:#FFD54F;
+    color:black;
+
+}
+
+.secondary{
+
+    border:2px solid white;
+    color:white;
+
+}
+
+.primary:hover{
+
+    background:white;
+
+}
+
+.secondary:hover{
+
+    background:white;
+    color:#0d47a1;
+
+}
+
+/* About */
+
+.about{
+
+    width:85%;
+    margin:80px auto;
+
+    background:rgba(255,255,255,.10);
+
+    backdrop-filter:blur(10px);
+
+    border-radius:15px;
+
+    padding:40px;
+
+    text-align:center;
+
+}
+
+.about h2{
+
+    margin-bottom:20px;
+    color:#FFD54F;
+
+}
+
+.about p{
+
+    line-height:1.8;
+    font-size:18px;
+
+}
+
+.stat-row{
+
+    display:flex;
+
+    justify-content:center;
+
+    gap:50px;
+
+    margin-top:30px;
+
+    flex-wrap:wrap;
+
+}
+
+.stat-row div{
+
+    text-align:center;
+
+}
+
+.stat-row h3{
+
+    font-size:32px;
+
+    color:#FFD54F;
+
+}
+
+/* Features */
+
+.features{
+
+    width:90%;
+
+    margin:60px auto;
+
+    display:flex;
+
+    gap:25px;
+
+}
+
+.card{
+
+    flex:1;
+
+    background:rgba(255,255,255,.10);
+
+    backdrop-filter:blur(8px);
+
+    border-radius:15px;
+
+    padding:30px;
+
+    text-align:center;
+
+    transition:.3s;
+
+}
+
+.card:hover{
+
+    transform:translateY(-10px);
+
+}
+
+.card h3{
+
+    color:#FFD54F;
+    margin-bottom:15px;
+
+}
+
+.card p{
+
+    line-height:1.7;
+
+}
+
+/* Footer */
+
+footer{
+
+    margin-top:80px;
+
+    background:rgba(0,0,0,.45);
+
+    text-align:center;
+
+    padding:30px;
+
+}
+
+footer a{
+
+    color:#FFD54F;
+
+    text-decoration:none;
+
+    margin:0 10px;
+
+}
+
+footer a:hover{
+
+    text-decoration:underline;
+
+}
+
+@media(max-width:900px){
+
+nav{
+
+    flex-direction:column;
+
+}
+
+nav ul{
+
+    flex-direction:column;
+    text-align:center;
+
+}
+
+nav ul li{
+
+    margin:10px 0;
+
+}
+
+.hero h1{
+
+    font-size:40px;
+
+}
+
+.features{
+
+    flex-direction:column;
+
+}
+
+}
+
+</style>
+
+</head>
+
+<body>
+
+<nav>
+
+<div class="logo">📚 Smart Library</div>
+
+<ul>
+
+<li><a href="index.html">Home</a></li>
+
+<li><a href="catalog.html">Books</a></li>
+
+<li><a href="login.html" id="loginLink">Login</a></li>
+
+<li><a href="register.html" id="registerLink">Register</a></li>
+
+<li><a href="dashboard.html">Dashboard</a></li>
+
+<li><a href="admin.html">Admin</a></li>
+
+</ul>
+
+</nav>
+
+<section class="hero">
+
+<div>
+
+<h1 id="heroTitle">Smart Library Management System</h1>
+
+<p id="heroText">
+
+A modern digital library where students can search,
+borrow and manage books anytime, anywhere.
+
+</p>
+
+<a href="catalog.html" class="btn primary">Browse Books</a>
+
+<a href="login.html" class="btn secondary" id="heroSecondaryBtn">Login</a>
+
+</div>
+
+</section>
+
+<section class="about">
+
+<h2>About Our Library</h2>
+
+<p>
+
+Our Library Management System allows students and library staff
+to manage books efficiently. Users can search for books,
+view availability, borrow resources and access their accounts
+through an easy-to-use platform.
+
+</p>
+
+<div class="stat-row">
+<div>
+<h3 id="statBooks">-</h3>
+<p>Books Available</p>
+</div>
+<div>
+<h3 id="statMembers">-</h3>
+<p>Registered Members</p>
+</div>
+</div>
+
+</section>
+
+<section class="features">
+
+<div class="card">
+
+<h3>📖 Book Catalogue</h3>
+
+<p>
+
+Search thousands of books from different departments.
+
+</p>
+
+</div>
+
+<div class="card">
+
+<h3>⚡ Fast Borrowing</h3>
+
+<p>
+
+Borrow and return books quickly and easily.
+
+</p>
+
+</div>
+
+<div class="card">
+
+<h3>👨‍💼 Admin Management</h3>
+
+<p>
+
+Manage books, users and borrowing records efficiently.
+
+</p>
+
+</div>
+
+</section>
+
+<footer>
+
+<p>
+
+<a href="index.html">Home</a> |
+
+<a href="catalog.html">Books</a> |
+
+<a href="login.html">Login</a> |
+
+<a href="register.html">Register</a> |
+
+<a href="dashboard.html">Dashboard</a> |
+
+<a href="admin.html">Admin</a>
+
+</p>
+
+<br>
+
+<p>© 2026 Smart Library Management System</p>
+
+</footer>
+
+<script>
+
+// Check session and personalize the page
+async function checkSession() {
+  try {
+    const res = await fetch('/api/me');
+    if (res.ok) {
+      const data = await res.json();
+      const user = data.user;
+
+      document.getElementById('heroTitle').textContent = `Welcome back, ${user.name}!`;
+      document.getElementById('heroText').textContent =
+        'Pick up where you left off — check your dashboard or browse for something new.';
+
+      const loginLink = document.getElementById('loginLink');
+      loginLink.textContent = 'Logout';
+      loginLink.href = '#';
+      loginLink.addEventListener('click', async (e) => {
+        e.preventDefault();
+        await fetch('/api/logout', { method: 'POST' });
+        window.location.reload();
+      });
+
+      document.getElementById('registerLink').style.display = 'none';
+
+      const secondaryBtn = document.getElementById('heroSecondaryBtn');
+      secondaryBtn.textContent = 'Go to Dashboard';
+      secondaryBtn.href = 'dashboard.html';
+    }
+  } catch (err) {
+    console.error('Session check failed', err);
+  }
+}
+
+// Load live stats
+async function loadStats() {
+  try {
+    const res = await fetch('/api/stats');
+    const data = await res.json();
+    document.getElementById('statBooks').textContent = data.totalBooks;
+    document.getElementById('statMembers').textContent = data.totalMembers;
+  } catch (err) {
+    document.getElementById('statBooks').textContent = '—';
+    document.getElementById('statMembers').textContent = '—';
+  }
+}
+
+checkSession();
+loadStats();
+
+</script>
+
+</body>
+</html>

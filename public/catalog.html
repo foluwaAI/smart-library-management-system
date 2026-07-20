@@ -1,0 +1,410 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Book Catalog | Smart Library Management System</title>
+
+<style>
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:Arial, Helvetica, sans-serif;
+}
+
+body{
+    background:
+    linear-gradient(rgba(5,25,60,.78),rgba(5,25,60,.78)),
+    url("images/library.jpg");
+    background-size:cover;
+    background-position:center;
+    background-attachment:fixed;
+    color:white;
+}
+
+/* Navigation */
+
+nav{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    padding:20px 70px;
+    background:rgba(0,0,0,.35);
+    backdrop-filter:blur(6px);
+}
+
+.logo{
+    font-size:30px;
+    font-weight:bold;
+}
+
+nav ul{
+    display:flex;
+    list-style:none;
+}
+
+nav ul li{
+    margin-left:25px;
+}
+
+nav ul li a{
+    color:white;
+    text-decoration:none;
+    font-weight:bold;
+    transition:.3s;
+}
+
+nav ul li a:hover,
+.active{
+    color:#FFD54F;
+}
+
+/* Heading */
+
+.title{
+    text-align:center;
+    margin-top:40px;
+}
+
+.title h1{
+    color:#FFD54F;
+    font-size:45px;
+}
+
+.title p{
+    margin-top:10px;
+}
+
+/* Search */
+
+.search{
+    width:80%;
+    margin:35px auto;
+    text-align:center;
+}
+
+.search input{
+    width:60%;
+    padding:15px;
+    border:none;
+    border-radius:30px;
+    outline:none;
+    font-size:16px;
+}
+
+/* Books */
+
+.books{
+
+    width:90%;
+
+    margin:50px auto;
+
+    display:grid;
+
+    grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+
+    gap:30px;
+
+}
+
+.book{
+
+    background:rgba(255,255,255,.12);
+
+    backdrop-filter:blur(10px);
+
+    border-radius:15px;
+
+    padding:20px;
+
+    text-align:center;
+
+    transition:.3s;
+
+}
+
+.book:hover{
+
+    transform:translateY(-8px);
+
+}
+
+.book img{
+
+    width:150px;
+
+    height:220px;
+
+    object-fit:cover;
+
+    border-radius:10px;
+
+}
+
+.book h3{
+
+    margin-top:15px;
+
+    color:#FFD54F;
+
+}
+
+.book p{
+
+    margin-top:8px;
+
+}
+
+.status{
+
+    display:inline-block;
+
+    margin-top:10px;
+
+    background:#2E7D32;
+
+    padding:6px 14px;
+
+    border-radius:20px;
+
+    font-size:14px;
+
+}
+
+button{
+
+    margin-top:18px;
+
+    padding:12px 25px;
+
+    border:none;
+
+    border-radius:30px;
+
+    background:#FFD54F;
+
+    font-weight:bold;
+
+    cursor:pointer;
+
+    transition:.3s;
+
+}
+
+button:hover{
+
+    background:white;
+
+}
+
+/* Footer */
+
+footer{
+
+    margin-top:60px;
+
+    background:rgba(0,0,0,.45);
+
+    padding:25px;
+
+    text-align:center;
+
+}
+
+footer a{
+
+    color:#FFD54F;
+
+    text-decoration:none;
+
+    margin:0 10px;
+
+}
+
+footer a:hover{
+
+    text-decoration:underline;
+
+}
+
+@media(max-width:900px){
+
+nav{
+
+    flex-direction:column;
+
+}
+
+nav ul{
+
+    flex-direction:column;
+
+    text-align:center;
+
+    margin-top:15px;
+
+}
+
+nav ul li{
+
+    margin:10px 0;
+
+}
+
+.search input{
+
+    width:90%;
+
+}
+
+}
+
+</style>
+
+</head>
+
+<body>
+
+<nav>
+
+<div class="logo">📚 Smart Library</div>
+
+<ul>
+
+<li><a href="index.html">Home</a></li>
+
+<li><a href="catalog.html" class="active">Books</a></li>
+
+<li><a href="login.html">Login</a></li>
+
+<li><a href="register.html">Register</a></li>
+
+<li><a href="dashboard.html">Dashboard</a></li>
+
+<li><a href="admin.html">Admin</a></li>
+
+</ul>
+
+</nav>
+
+<div class="title">
+
+<h1>Library Book Catalog</h1>
+
+<p>Browse our collection of books.</p>
+
+</div>
+
+<div class="search">
+
+<input type="text" placeholder="Search books...">
+
+</div>
+
+<section class="books">
+
+<div class="book">
+
+<img src="book 1.png" alt="Book">
+
+<h3>Introduction to Java</h3>
+
+<p><strong>Author:</strong> John Smith</p>
+
+<p><strong>Category:</strong> Computer Science</p>
+
+<span class="status">Available</span>
+
+<br>
+
+<button>View Details</button>
+
+</div>
+
+<div class="book">
+
+<img src="book 2.png" alt="Book">
+
+<h3>Python Programming</h3>
+
+<p><strong>Author:</strong> Mark Brown</p>
+
+<p><strong>Category:</strong> Programming</p>
+
+<span class="status">Available</span>
+
+<br>
+
+<button>View Details</button>
+
+</div>
+
+<div class="book">
+
+<img src="book 3.png" alt="Book">
+
+<h3>Database Systems</h3>
+
+<p><strong>Author:</strong> Thomas Green</p>
+
+<p><strong>Category:</strong> Database</p>
+
+<span class="status">Available</span>
+
+<br>
+
+<button>View Details</button>
+
+</div>
+
+<div class="book">
+
+<img src="book 4.png" alt="Book">
+
+<h3>Computer Networks</h3>
+
+<p><strong>Author:</strong> Andrew White</p>
+
+<p><strong>Category:</strong> Networking</p>
+
+<span class="status">Available</span>
+
+<br>
+
+<button>View Details</button>
+
+</div>
+
+</section>
+
+<footer>
+
+<p>
+
+<a href="index.html">Home</a> |
+
+<a href="catalog.html">Books</a> |
+
+<a href="login.html">Login</a> |
+
+<a href="register.html">Register</a> |
+
+<a href="dashboard.html">Dashboard</a> |
+
+<a href="admin.html">Admin</a>
+
+</p>
+
+<br>
+
+<p>&copy; 2026 Smart Library Management System</p>
+
+</footer>
+
+</body>
+</html>

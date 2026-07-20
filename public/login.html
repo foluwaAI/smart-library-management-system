@@ -1,0 +1,376 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Login | Smart Library Management System</title>
+
+<style>
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:Arial, Helvetica, sans-serif;
+}
+
+body{
+
+    background:
+    linear-gradient(rgba(5,25,60,.78),rgba(5,25,60,.78)),
+    url("images/library.jpg");
+
+    background-size:cover;
+    background-position:center;
+    background-repeat:no-repeat;
+    background-attachment:fixed;
+
+    color:white;
+}
+
+/* Navigation */
+
+nav{
+
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+
+    padding:20px 70px;
+
+    background:rgba(0,0,0,.35);
+    backdrop-filter:blur(6px);
+
+}
+
+.logo{
+
+    font-size:30px;
+    font-weight:bold;
+
+}
+
+nav ul{
+
+    display:flex;
+    list-style:none;
+
+}
+
+nav ul li{
+
+    margin-left:25px;
+
+}
+
+nav ul li a{
+
+    text-decoration:none;
+    color:white;
+    font-weight:bold;
+    transition:.3s;
+
+}
+
+nav ul li a:hover,
+.active{
+
+    color:#FFD54F;
+
+}
+
+/* Login Section */
+
+.container{
+
+    display:flex;
+    justify-content:center;
+    align-items:center;
+
+    height:85vh;
+
+}
+
+.login-box{
+
+    width:400px;
+
+    background:rgba(255,255,255,.12);
+
+    backdrop-filter:blur(12px);
+
+    padding:40px;
+
+    border-radius:15px;
+
+    box-shadow:0 10px 25px rgba(0,0,0,.3);
+
+}
+
+.login-box h2{
+
+    text-align:center;
+    margin-bottom:30px;
+    color:#FFD54F;
+
+}
+
+label{
+
+    display:block;
+    margin-bottom:8px;
+    margin-top:15px;
+
+}
+
+input{
+
+    width:100%;
+
+    padding:14px;
+
+    border:none;
+
+    border-radius:8px;
+
+    margin-bottom:10px;
+
+    outline:none;
+
+    font-size:16px;
+
+}
+
+button{
+
+    width:100%;
+
+    padding:15px;
+
+    background:#FFD54F;
+
+    color:black;
+
+    border:none;
+
+    border-radius:8px;
+
+    cursor:pointer;
+
+    font-size:17px;
+
+    font-weight:bold;
+
+    margin-top:15px;
+
+    transition:.3s;
+
+}
+
+button:hover{
+
+    background:white;
+
+}
+
+.login-box p{
+
+    text-align:center;
+
+    margin-top:20px;
+
+}
+
+.login-box a{
+
+    color:#FFD54F;
+
+    text-decoration:none;
+
+}
+
+.login-box a:hover{
+
+    text-decoration:underline;
+
+}
+
+/* Footer */
+
+footer{
+
+    background:rgba(0,0,0,.45);
+
+    text-align:center;
+
+    padding:20px;
+
+}
+
+footer a{
+
+    color:#FFD54F;
+
+    text-decoration:none;
+
+    margin:0 10px;
+
+}
+
+footer a:hover{
+
+    text-decoration:underline;
+
+}
+
+@media(max-width:900px){
+
+nav{
+
+    flex-direction:column;
+
+}
+
+nav ul{
+
+    flex-direction:column;
+    text-align:center;
+    margin-top:15px;
+
+}
+
+nav ul li{
+
+    margin:10px 0;
+
+}
+
+.login-box{
+
+    width:90%;
+
+}
+
+}
+
+</style>
+
+</head>
+
+<body>
+
+<nav>
+
+<div class="logo">📚 Smart Library</div>
+
+<ul>
+
+<li><a href="index.html">Home</a></li>
+
+<li><a href="catalog.html">Books</a></li>
+
+<li><a href="login.html" class="active">Login</a></li>
+
+<li><a href="register.html">Register</a></li>
+
+<li><a href="dashboard.html">Dashboard</a></li>
+
+<li><a href="admin.html">Admin</a></li>
+
+</ul>
+
+</nav>
+
+<div class="container">
+
+<div class="login-box">
+
+<h2>Login</h2>
+
+<form id="loginForm">
+
+<label>Email Address</label>
+
+<input type="email" id="email" placeholder="Enter your email" required>
+
+<label>Password</label>
+
+<input type="password" id="password" placeholder="Enter your password" required>
+
+<p id="errorMsg" style="color:#ff6b6b; text-align:center; display:none;"></p>
+
+<button type="submit">Login</button>
+
+<p>
+
+Don't have an account?
+
+<a href="register.html">Register Here</a>
+
+</p>
+
+</form>
+
+</div>
+
+</div>
+
+<footer>
+
+<p>
+
+<a href="index.html">Home</a> |
+
+<a href="catalog.html">Books</a> |
+
+<a href="register.html">Register</a>
+
+</p>
+
+<br>
+
+<p>&copy; 2026 Smart Library Management System</p>
+
+</footer>
+
+<script>
+document.getElementById('loginForm').addEventListener('submit', async (e) => {
+  e.preventDefault();
+
+  const email = document.getElementById('email').value;
+  const password = document.getElementById('password').value;
+  const errorMsg = document.getElementById('errorMsg');
+
+  try {
+    const response = await fetch('/api/login', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ email, password })
+    });
+
+    const data = await response.json();
+
+    if (!response.ok) {
+      errorMsg.textContent = data.error || 'Login failed';
+      errorMsg.style.display = 'block';
+      return;
+    }
+
+    // Logged in successfully — redirect based on role
+    if (data.user.role === 'admin') {
+      window.location.href = 'admin.html';
+    } else {
+      window.location.href = 'dashboard.html';
+    }
+
+  } catch (err) {
+    errorMsg.textContent = 'Something went wrong. Please try again.';
+    errorMsg.style.display = 'block';
+  }
+});
+</script>
+
+</body>
+</html>
